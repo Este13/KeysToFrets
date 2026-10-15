@@ -28,9 +28,13 @@ ui             HTML/CSS/JS, bundled Tonal and chords-db data
 tests          C++ (juce::UnitTest) and JS (node:test)
 ```
 
-## Build
+## Install
 
-Requires Visual Studio 2022/2026 (or Build Tools) with the C++ workload (includes CMake), Git, Node.js, and the Edge WebView2 Runtime (the app explains how to get it if missing).
+No build needed: a prebuilt `KeysToFrets.exe` is in the repository root and attached to the [releases](https://github.com/Este13/KeysToFrets/releases). Keep it next to the `ui` folder and run it. The Edge WebView2 Runtime is required (the app explains how to get it if missing).
+
+## Build from source
+
+Only needed if you want to modify the code. Requires Visual Studio 2022/2026 (or Build Tools) with the C++ workload (includes CMake), Git, Node.js, and the Edge WebView2 Runtime (the app explains how to get it if missing).
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\build.ps1
