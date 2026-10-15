@@ -1,0 +1,131 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+.spacer { flex: 1; }
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.pill .led { width: 9px; height: 9px; border-radius: 50%; background: var(--bad); }
+.pill.on .led { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+
+.vstbox { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.vstname { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+.vstname.loaded { color: var(--text); }
+.notice { font-size: 12px; color: var(--accent); }
+.latency { font-size: 12px; color: var(--muted); padding: 0 6px; white-space: nowrap; }
+
+.stage {
+  transition: margin-right 220ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 57px);
+  padding: 8px 16px 14px;
+}
+
+.history {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  flex: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 100%);
+}
+.track { position: absolute; inset: 0; }
+.idle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 18px;
+  pointer-events: none;
+}
+.idle.hidden { display: none; }
+
+.chip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  white-space: nowrap;
+  font-size: 104px;
+  font-weight: 650;
+  letter-spacing: -2px;
+  color: var(--text);
+  will-change: transform, opacity;
+  transition: transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 380ms ease;
+}
+.chip:not(.is-current) { color: #9aa1b5; }
+.chip.chip-literal { font-size: 64px; letter-spacing: 0; }
+.chip.is-preview { color: var(--accent); }
+
+.held { height: 24px; color: var(--muted); font-size: 14px; letter-spacing: 1px; }
+
+.diagram-panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button {
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+  padding: 7px 18px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.seg button.active { background: var(--accent); color: #1a1405; font-weight: 600; }
+
+.diagram-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.diagram-host { height: 100%; max-height: 330px; display: grid; place-items: center; }
+.diagram-host svg { height: 100%; max-height: 330px; width: auto; }
+.empty-diagram { position: absolute; color: var(--muted); }
+
+.diagram .dg-string { stroke: var(--string); stroke-width: 1.4; }
+.diagram .dg-fret { stroke: var(--fret); stroke-width: 1.2; }
+.diagram .dg-nut { fill: var(--string); }
+.diagram .dg-dot, .diagram .dg-barre { fill: var(--dot); }
+.diagram .dg-num { fill: var(--dot-text); font: 700 14px "Segoe UI", sans-serif; }
+.diagram .dg-label { fill: var(--muted); font: 600 15px "Segoe UI", sans-serif; }
+.diagram .dg-x { stroke: var(--bad); stroke-width: 2; fill: none; stroke-linecap: round; }
+.diagram .dg-o { stroke: var(--string); stroke-width: 2; fill: none; }
+
+.pager { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 14px; }
+.pager span { min-width: 76px; text-align: center; }
+
+.meta { display: flex; align-items: center; gap: 10px; min-height: 22px; font-size: 13px; }
+.badge { padding: 2px 10px; border-radius: 999px; font-size: 12px; background: var(--bg-3); }
+.badge:empty { display: none; }
+.badge.db { color: var(--ok); }
+.badge.gen { color: var(--accent); }
+.badge.bad { color: var(--bad); }
+
+body.panel-open .stage { margin-right: 340px; }

@@ -1,0 +1,60 @@
+.panel {
+  position: fixed;
+  top: 57px;
+  right: 0;
+  bottom: 0;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-2);
+  border-left: 1px solid var(--line);
+  box-shadow: -12px 0 30px rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+.panel[hidden] { display: none; }
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.panel-head h2 { margin: 0; font-size: 16px; }
+.panel-body { padding: 8px 16px 20px; overflow: auto; flex: 1; }
+.panel-body h3 { margin: 18px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.panel-body label { display: block; margin: 8px 0; font-size: 12px; color: var(--muted); }
+.panel-body label > select, .panel-body label > input { margin-top: 4px; }
+
+.readout { margin-top: 10px; padding: 10px; border-radius: 8px; background: var(--bg-3); font-size: 13px; }
+.error { margin-top: 8px; color: var(--bad); font-size: 12px; }
+
+.logs { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.row { display: flex; gap: 8px; }
+
+.list { list-style: none; margin: 0; padding: 0; overflow: auto; border: 1px solid var(--line); border-radius: 8px; }
+.list.sessions { max-height: 150px; flex: none; }
+.list.chords { flex: 1; min-height: 120px; }
+.list li { padding: 8px 10px; font-size: 13px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); }
+.list li:last-child { border-bottom: 0; }
+.list li:hover { background: var(--bg-3); }
+.list li.selected { background: var(--accent); color: #1a1405; }
+.list li .sub { opacity: 0.7; font-size: 12px; }
+.chords { outline: none; }
+.chords li .nm { font-weight: 600; }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  z-index: 400;
+  max-width: 80vw;
+}
+.toast[hidden] { display: none; }
+.toast.bad { border-color: var(--bad); }

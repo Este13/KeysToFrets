@@ -1,0 +1,58 @@
+:root {
+  --bg: #12141a;
+  --bg-2: #1a1d26;
+  --bg-3: #232733;
+  --line: #2f3442;
+  --text: #eceef4;
+  --muted: #8c93a6;
+  --accent: #f5b942;
+  --ok: #4cd08a;
+  --bad: #ff6b6b;
+  --dot: #f3f4f8;
+  --dot-text: #14161c;
+  --fret: #6a7186;
+  --string: #aab0c2;
+  --radius: 10px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+
+.btn {
+  background: var(--bg-3);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn:disabled { opacity: 0.4; cursor: default; }
+.btn.ghost { background: transparent; }
+.btn.icon { width: 38px; padding: 7px 0; }
+
+select, input[type="number"] {
+  width: 100%;
+  background: var(--bg-3);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 8px;
+  font: inherit;
+  font-size: 13px;
+}

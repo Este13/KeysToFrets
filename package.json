@@ -1,0 +1,14 @@
+{
+  "name": "keystofrets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bundle": "node tools/bundle-vendor.mjs",
+    "test": "node --test tests/js/*.test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.0",
+    "tonal": "6.4.1"
+  }
+}

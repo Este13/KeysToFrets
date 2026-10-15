@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KeysToFrets</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/panels.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="pill" id="midiPill"><span class="led"></span><span id="midiText">MIDI: not connected</span></div>
+    <div class="vstbox">
+      <button id="btnSelectVst" class="btn">Select VST3&hellip;</button>
+      <span id="vstName" class="vstname muted">No plugin loaded</span>
+      <button id="btnEditor" class="btn ghost" disabled>Editor</button>
+      <span id="vstNotice" class="notice" hidden></span>
+    </div>
+    <div class="spacer"></div>
+    <div class="latency" id="latencyBadge" title="Output latency reported by the audio driver">Latency &mdash;</div>
+    <button id="btnLogs" class="btn ghost">Logs</button>
+    <button id="btnSettings" class="btn ghost">Settings</button>
+  </header>
+
+  <main class="stage">
+    <section class="history" aria-live="polite">
+      <div class="track" id="track"></div>
+      <div class="idle" id="idleText">Play a chord on your keyboard</div>
+    </section>
+    <div class="held" id="held"></div>
+
+    <section class="diagram-panel">
+      <div class="seg" id="modeSwitch" role="group" aria-label="Diagram mode">
+        <button data-mode="translation" class="active">Translation</button>
+        <button data-mode="literal">Literal</button>
+      </div>
+      <div class="diagram-wrap">
+        <div id="diagramHost" class="diagram-host"></div>
+        <div id="emptyDiagram" class="empty-diagram">No diagram yet</div>
+      </div>
+      <div class="pager">
+        <button id="btnPrev" class="btn icon" title="Previous voicing (Shift+Left)" aria-label="Previous voicing">&#9664;</button>
+        <span id="pagerText">0 of 0</span>
+        <button id="btnNext" class="btn icon" title="Next voicing (Shift+Right)" aria-label="Next voicing">&#9654;</button>
+      </div>
+      <div class="meta"><span id="badge" class="badge"></span><span id="diagramNote" class="muted"></span></div>
+    </section>
+  </main>
+
+  <aside class="panel" id="settingsPanel" hidden>
+    <div class="panel-head"><h2>Settings</h2><button class="btn ghost" data-close="settingsPanel">Close</button></div>
+    <div class="panel-body">
+      <h3>Audio output</h3>
+      <label>Driver type<select id="selDriver"></select></label>
+      <label>Output device<select id="selDevice"></select></label>
+      <label>Sample rate<select id="selRate"></select></label>
+      <label>Buffer size<select id="selBuffer"></select></label>
+      <div class="readout" id="latencyReadout">Latency &mdash;</div>
+      <div class="error" id="audioError" hidden></div>
+      <h3>MIDI input</h3>
+      <label>Device<select id="selMidi"></select></label>
+      <h3>Behaviour</h3>
+      <label>Chord grouping window (ms)<input id="inGroup" type="number" min="10" max="400" step="5"></label>
+      <label>Replay note length (ms)<input id="inReplay" type="number" min="50" max="5000" step="50"></label>
+    </div>
+  </aside>
+
+  <aside class="panel" id="logsPanel" hidden>
+    <div class="panel-head"><h2>Session logs</h2><button class="btn ghost" data-close="logsPanel">Close</button></div>
+    <div class="panel-body logs">
+      <div class="row"><button id="btnBrowseLog" class="btn">Open file&hellip;</button><button id="btnRefreshLogs" class="btn ghost">Refresh</button></div>
+      <ul id="logList" class="list sessions"></ul>
+      <div class="muted" id="logTitle">Select a session</div>
+      <ul id="chordList" class="list chords" tabindex="0"></ul>
+      <div class="muted small">Up/Down or Left/Right: replay the previous/next chord through the VST.</div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="vendor/tonal.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
